@@ -1,11 +1,5 @@
 
-<head>
-    <meta charset="UTF-8">
-    <title>LP - Atividade Prática</title>
-</head>
-<body>
 
-<h1>🧩 Linguagem de Programação — Atividade Prática</h1>
 
 <h2>📘 1. Teste de Mesa</h2>
 
