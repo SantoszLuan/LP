@@ -72,34 +72,5 @@ Média = ((P1*0.5 + E1*0.2 + E2*0.3 + X + SUB*0.15) * 0.5)
 <p>📊 <strong>Modelagem:</strong> Crie o <strong>diagrama UML</strong> das classes (sugestão: <a href="https://www.lucidchart.com">Lucidchart</a>).</p>
 <p>⚙️ <strong>Requisitos:</strong> Um <strong>objeto</strong> representando <strong>cada classe</strong> deve ser <strong>visualizado no vídeo</strong>.</p>
 
-<h2>📑 Estrutura sugerida do repositório</h2>
-<pre>
-📁 LP-Atividade
-├── 📄 README.md
-├── 📂 Teste-de-Mesa
-│   ├── cenarios.xlsx (ou .pdf, .txt)
-│   └── analise.txt
-├── 📂 Musica
-│   ├── diagrama-uml.png
-│   └── descricao.txt
-├── 📂 Vik-Muniz
-│   ├── obra1-diagrama.png
-│   ├── obra2-diagrama.png
-│   └── descricao.txt
-├── 📂 Doodle
-│   ├── imagem.png
-│   ├── diagrama-uml.png
-│   └── descricao.txt
-└── 📂 Video
-    ├── link-video.txt
-    ├── diagrama-uml.png
-    └── descricao.txt
-</pre>
 
-<h2>✍️ Autor</h2>
-<p><strong>Nome:</strong> [Seu nome aqui]<br>
-<strong>Disciplina:</strong> Linguagem de Programação<br>
-<strong>Professor:</strong> Felipe (Projeto AGIR – Caçapava)</p>
 
-</body>
-</html>
