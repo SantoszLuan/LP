@@ -1,4 +1,4 @@
-<h1> <center> Entrega 1 </center> </h1>
+<h1> <align="center"> Entrega 1 </h1>
 
 
 <h2> 1. Média</h2>
