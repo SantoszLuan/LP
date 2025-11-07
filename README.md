@@ -1,4 +1,4 @@
-<h1 align="center">Engenharia de Software</h1>
+<h1 align="center"> Linguagem de Programação </h1>
 
 
 <h2> 1. Média </h2>
