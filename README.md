@@ -1,4 +1,4 @@
-<h1 align="center"> Linguagem de Programação </h1>
+<h1 align="center"> Entrega 1 </h1>
 
 
 <h2> 1. Média </h2>
@@ -426,9 +426,708 @@ public interface Registravel {
 
 </code></pre>
 
+<h1 align="center"> Entrega 2 </h1>
+
+<h2> Main </h2>
+<pre><code class="language-java">
+  package org.example.calculomedia;
+
+import org.example.calculomedia.gui.PrincipalGUI; // Chama a nova GUI
+import javax.swing.SwingUtilities;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Iniciando...");
+
+        SwingUtilities.invokeLater(() -> {
+            new PrincipalGUI().setVisible(true);
+        });
+    }
+}
+</code></pre>
+
+<h2> Musica </h2>
+<pre><code class="language-java">
+package org.example.calculomedia;
+
+public class Musica {
+    private String nome;
+    private String artista;
+    private int duracaoEmSegundos;
+
+    public Musica(String nome, String artista, int duracaoEmSegundos) {
+        this.nome = nome;
+        this.artista = artista;
+        this.duracaoEmSegundos = duracaoEmSegundos; // CORRIGIDO
+    }
+
+    public String getNome() { return nome; }
+    public String getArtista() { return artista; }
+    public void setArtista(String artista) { this.artista = artista; }
+    public int getDuracaoEmSegundos() { return duracaoEmSegundos; }
+    public void setDuracaoEmSegundos(int duracaoEmSegundos) { this.duracaoEmSegundos = duracaoEmSegundos; }
+
+    @Override
+    public String toString() {
+        return "Musica{Nome: " + nome + ", Artista: " + artista + ", Duração: " + duracaoEmSegundos + "s}";
+    }
+}
+</code></pre>
+
+<h2> Album </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia;
+
+public class Album {
+    private String titulo;
+    private int anoLancamento;
+    private int numeroDeFaixas;
+
+    public Album(String titulo, int anoLancamento, int numeroDeFaixas) {
+        this.titulo = titulo;
+        this.anoLancamento = anoLancamento;
+        this.numeroDeFaixas = numeroDeFaixas;
+    }
+
+    public String getTitulo() { return titulo; }
+    public int getAnoLancamento() { return anoLancamento; }
+    public void setAnoLancamento(int anoLancamento) { this.anoLancamento = anoLancamento; }
+    public int getNumeroDeFaixas() { return numeroDeFaixas; }
+    public void setNumeroDeFaixas(int numeroDeFaixas) { this.numeroDeFaixas = numeroDeFaixas; }
+
+    @Override
+    public String toString() {
+        return "Album{Título: " + titulo + ", Lançamento: " + anoLancamento + ", Faixas: " + numeroDeFaixas + "}";
+    }
+}
+</code></pre>
+
+<h2> Artista </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia;
+
+public class Artista {
+    
+    private String nomeCompleto; 
+    private String nacionalidade;
+    private int anoInicioCarreira;
+
+  
+    public Artista(String nomeCompleto, String nacionalidade, int anoInicioCarreira) {
+        this.nomeCompleto = nomeCompleto;
+        this.nacionalidade = nacionalidade;
+        this.anoInicioCarreira = anoInicioCarreira;
+    }
+
+   
+    public String getNomeCompleto() { return nomeCompleto; }
+    public String getNacionalidade() { return nacionalidade; }
+    public void setNacionalidade(String nacionalidade) { this.nacionalidade = nacionalidade; }
+    public int getAnoInicioCarreira() { return anoInicioCarreira; }
+    public void setAnoInicioCarreira(int anoInicioCarreira) { this.anoInicioCarreira = anoInicioCarreira; }
+
+    @Override
+    public String toString() {
+        return "Artista{Nome: " + nomeCompleto + ", País: " + nacionalidade + ", Início: " + anoInicioCarreira + "}";
+    }
+}
+</code></pre>
+
+<h2> Musica - Service </h2>
+<pre><code class="language-java">
+package org.example.calculomedia.service;
+
+import org.example.calculomedia.dao.DAO;
+import org.example.calculomedia.Musica;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MusicaService implements DAO<Musica> {
+    private static final List<Musica> REPOSITORIO_MUSICAS = new ArrayList<>();
+
+    @Override
+    public void salvar(Musica musica) {
+        REPOSITORIO_MUSICAS.add(musica);
+    }
+
+    @Override
+    public Musica buscarPorId(String nomeMusica) {
+        return REPOSITORIO_MUSICAS.stream()
+                .filter(m -> m.getNome().equals(nomeMusica))
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public void atualizar(Musica musicaAtualizada) {
+        Musica musicaExistente = buscarPorId(musicaAtualizada.getNome());
+        if (musicaExistente != null) {
+            musicaExistente.setArtista(musicaAtualizada.getArtista());
+            musicaExistente.setDuracaoEmSegundos(musicaAtualizada.getDuracaoEmSegundos());
+        }
+    }
+
+    @Override
+    public void deletar(Musica musica) {
+        REPOSITORIO_MUSICAS.removeIf(m -> m.getNome().equals(musica.getNome()));
+    }
+
+    @Override
+    public List<Musica> buscarTodos() {
+        return new ArrayList<>(REPOSITORIO_MUSICAS);
+    }
+}
+</code></pre>
+
+<h2> Album - Service </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia.service;
+
+import org.example.calculomedia.dao.DAO;
+import org.example.calculomedia.Album;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AlbumService implements DAO<Album> {
+    private static final List<Album> REPOSITORIO_ALBUNS = new ArrayList<>();
+
+    @Override
+    public void salvar(Album album) {
+        REPOSITORIO_ALBUNS.add(album);
+    }
+
+    @Override
+    public Album buscarPorId(String tituloAlbum) {
+        return REPOSITORIO_ALBUNS.stream()
+                .filter(a -> a.getTitulo().equals(tituloAlbum))
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public void atualizar(Album albumAtualizado) {
+        Album albumExistente = buscarPorId(albumAtualizado.getTitulo());
+        if (albumExistente != null) {
+            albumExistente.setAnoLancamento(albumAtualizado.getAnoLancamento());
+            albumExistente.setNumeroDeFaixas(albumAtualizado.getNumeroDeFaixas());
+        }
+    }
+
+    @Override
+    public void deletar(Album album) {
+        REPOSITORIO_ALBUNS.removeIf(a -> a.getTitulo().equals(album.getTitulo()));
+    }
+
+    @Override
+    public List<Album> buscarTodos() {
+        return new ArrayList<>(REPOSITORIO_ALBUNS);
+    }
+}
+</code></pre>
+
+<h2> Artista - Service </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia;
+
+public class Artista {
+
+    private String nomeCompleto;
+    private String nacionalidade;
+    private int anoInicioCarreira;
 
 
+    public Artista(String nomeCompleto, String nacionalidade, int anoInicioCarreira) {
+        this.nomeCompleto = nomeCompleto;
+        this.nacionalidade = nacionalidade;
+        this.anoInicioCarreira = anoInicioCarreira;
+    }
 
+
+    public String getNomeCompleto() { return nomeCompleto; }
+    public String getNacionalidade() { return nacionalidade; }
+    public void setNacionalidade(String nacionalidade) { this.nacionalidade = nacionalidade; }
+    public int getAnoInicioCarreira() { return anoInicioCarreira; }
+    public void setAnoInicioCarreira(int anoInicioCarreira) { this.anoInicioCarreira = anoInicioCarreira; }
+
+    @Override
+    public String toString() {
+        return "Artista{Nome: " + nomeCompleto + ", País: " + nacionalidade + ", Início: " + anoInicioCarreira + "}";
+    }
+}
+</code></pre>
+
+<h2> Princiapl GUI </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia.gui;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class PrincipalGUI extends JFrame {
+
+    public PrincipalGUI() {
+        super("Gerenciamento Completo de Músicas, Álbuns e Artistas");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+        
+        tabbedPane.addTab("Músicas", new MusicaGUI());
+
+     
+        tabbedPane.addTab("Álbuns", new AlbumGUI());
+
+       
+        tabbedPane.addTab("Artistas", new ArtistaGUI()); // <-- NOVA ABA AQUI
+
+        add(tabbedPane, BorderLayout.CENTER);
+        setSize(800, 550); // Aumentei o tamanho para 3 abas
+        setLocationRelativeTo(null);
+    }
+}
+</code></pre>
+
+<h2> Musica - GUI </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia.gui;
+
+import org.example.calculomedia.Musica;
+import org.example.calculomedia.service.MusicaService;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.List;
+
+
+public class MusicaGUI extends JPanel {
+    private MusicaService musicaService = new MusicaService();
+    private JTable musicTable;
+    private DefaultTableModel tableModel;
+    private JTextField txtNome, txtArtista, txtDuracao;
+
+    public MusicaGUI() {
+        setLayout(new BorderLayout(10, 10));
+
+        
+        String[] colunas = {"Nome", "Artista", "Duração"};
+        tableModel = new DefaultTableModel(colunas, 0);
+        musicTable = new JTable(tableModel);
+        carregarMusicasNaTabela();
+
+      
+        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
+        JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+
+        txtNome = new JTextField(20);
+        txtArtista = new JTextField(20);
+        txtDuracao = new JTextField(20);
+
+        formPanel.add(new JLabel("Nome:"));
+        formPanel.add(txtNome);
+        formPanel.add(new JLabel("Artista:"));
+        formPanel.add(txtArtista);
+        formPanel.add(new JLabel("Duração (Segundos):"));
+        formPanel.add(txtDuracao);
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JButton btnSalvar = new JButton("Salvar");
+        JButton btnBuscar = new JButton("Recarregar");
+        JButton btnAtualizar = new JButton("Atualizar");
+        JButton btnDeletar = new JButton("Deletar");
+
+        buttonPanel.add(btnSalvar);
+        buttonPanel.add(btnBuscar);
+        buttonPanel.add(btnAtualizar);
+        buttonPanel.add(btnDeletar);
+
+        topPanel.add(formPanel, BorderLayout.NORTH);
+        topPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+     al
+        add(topPanel, BorderLayout.NORTH);
+        add(new JScrollPane(musicTable), BorderLayout.CENTER);
+
+   
+        btnSalvar.addActionListener(e -> salvarMusica());
+        btnBuscar.addActionListener(e -> carregarMusicasNaTabela());
+        btnAtualizar.addActionListener(e -> atualizarMusica());
+        btnDeletar.addActionListener(e -> deletarMusica());
+
+
+        musicTable.getSelectionModel().addListSelectionListener(e -> preencherCampos());
+    }
+
+    private void carregarMusicasNaTabela() {
+        tableModel.setRowCount(0);
+        List<Musica> musicas = musicaService.buscarTodos();
+        for (Musica m : musicas) {
+            tableModel.addRow(new Object[]{m.getNome(), m.getArtista(), m.getDuracaoEmSegundos()});
+        }
+    }
+
+    private void salvarMusica() {
+        try {
+            String nome = txtNome.getText();
+            String artista = txtArtista.getText();
+            int duracao = Integer.parseInt(txtDuracao.getText());
+
+            if (musicaService.buscarPorId(nome) != null) {
+                JOptionPane.showMessageDialog(this, "Música já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Musica novaMusica = new Musica(nome, artista, duracao);
+            musicaService.salvar(novaMusica);
+            carregarMusicasNaTabela();
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Duração deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void atualizarMusica() {
+        try {
+            String nome = txtNome.getText();
+            String artista = txtArtista.getText();
+            int duracao = Integer.parseInt(txtDuracao.getText());
+
+            Musica musicaAtualizada = new Musica(nome, artista, duracao);
+            musicaService.atualizar(musicaAtualizada);
+
+            carregarMusicasNaTabela();
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Duração deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deletarMusica() {
+        String nome = txtNome.getText();
+        if (musicaService.buscarPorId(nome) == null) {
+            JOptionPane.showMessageDialog(this, "Música não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Musica musicaParaDeletar = new Musica(nome, "", 0);
+        musicaService.deletar(musicaParaDeletar);
+
+        carregarMusicasNaTabela();
+        limparCampos();
+    }
+
+    private void preencherCampos() {
+        int row = musicTable.getSelectedRow();
+        if (row >= 0) {
+            txtNome.setText(tableModel.getValueAt(row, 0).toString());
+            txtArtista.setText(tableModel.getValueAt(row, 1).toString());
+            txtDuracao.setText(tableModel.getValueAt(row, 2).toString());
+        }
+    }
+
+    private void limparCampos() {
+        txtNome.setText("");
+        txtArtista.setText("");
+        txtDuracao.setText("");
+    }
+}
+</code></pre>
+
+<h2> Album - GUI </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia.gui;
+
+import org.example.calculomedia.Album;
+import org.example.calculomedia.service.AlbumService;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.List;
+
+public class AlbumGUI extends JPanel {
+    private AlbumService albumService = new AlbumService();
+    private JTable albumTable;
+    private DefaultTableModel tableModel;
+    private JTextField txtTitulo, txtAnoLancamento, txtNumeroFaixas;
+
+    public AlbumGUI() {
+        setLayout(new BorderLayout(10, 10));
+
+        
+        String[] colunas = {"Título", "Ano de Lançamento", "Nº Faixas"};
+        tableModel = new DefaultTableModel(colunas, 0);
+        albumTable = new JTable(tableModel);
+        carregarAlbumsNaTabela();
+
+    
+        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
+        JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+
+        txtTitulo = new JTextField(20);
+        txtAnoLancamento = new JTextField(20);
+        txtNumeroFaixas = new JTextField(20);
+
+        formPanel.add(new JLabel("Título:"));
+        formPanel.add(txtTitulo);
+        formPanel.add(new JLabel("Ano de Lançamento:"));
+        formPanel.add(txtAnoLancamento);
+        formPanel.add(new JLabel("Número de Faixas:"));
+        formPanel.add(txtNumeroFaixas);
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JButton btnSalvar = new JButton("Salvar");
+        JButton btnBuscar = new JButton("Recarregar");
+        JButton btnAtualizar = new JButton("Atualizar");
+        JButton btnDeletar = new JButton("Deletar");
+
+        buttonPanel.add(btnSalvar);
+        buttonPanel.add(btnBuscar);
+        buttonPanel.add(btnAtualizar);
+        buttonPanel.add(btnDeletar);
+
+        topPanel.add(formPanel, BorderLayout.NORTH);
+        topPanel.add(buttonPanel, BorderLayout.SOUTH);
+        
+        add(topPanel, BorderLayout.NORTH);
+        add(new JScrollPane(albumTable), BorderLayout.CENTER);
+        
+        btnSalvar.addActionListener(e -> salvarAlbum());
+        btnBuscar.addActionListener(e -> carregarAlbumsNaTabela());
+        btnAtualizar.addActionListener(e -> atualizarAlbum());
+        btnDeletar.addActionListener(e -> deletarAlbum());
+        
+        albumTable.getSelectionModel().addListSelectionListener(e -> preencherCampos());
+    }
+
+    private void carregarAlbumsNaTabela() {
+        tableModel.setRowCount(0);
+        List<Album> albums = albumService.buscarTodos();
+
+        for (Album a : albums) {
+            tableModel.addRow(new Object[]{a.getTitulo(), a.getAnoLancamento(), a.getNumeroDeFaixas()});
+        }
+    }
+
+    private void salvarAlbum() {
+        try {
+            String titulo = txtTitulo.getText();
+            int anoLancamento = Integer.parseInt(txtAnoLancamento.getText());
+            int numeroFaixas = Integer.parseInt(txtNumeroFaixas.getText());
+
+            if (albumService.buscarPorId(titulo) != null) {
+                JOptionPane.showMessageDialog(this, "Álbum com este título já existe!", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Album novoAlbum = new Album(titulo, anoLancamento, numeroFaixas);
+            albumService.salvar(novoAlbum);
+            carregarAlbumsNaTabela();
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ano e número de faixas devem ser números inteiros!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void atualizarAlbum() {
+        try {
+            String titulo = txtTitulo.getText();
+            int anoLancamento = Integer.parseInt(txtAnoLancamento.getText());
+            int numeroFaixas = Integer.parseInt(txtNumeroFaixas.getText());
+
+            Album albumAtualizado = new Album(titulo, anoLancamento, numeroFaixas);
+            albumService.atualizar(albumAtualizado);
+
+            carregarAlbumsNaTabela();
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ano e número de faixas devem ser números inteiros!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deletarAlbum() {
+        String titulo = txtTitulo.getText();
+        if (albumService.buscarPorId(titulo) == null) {
+            JOptionPane.showMessageDialog(this, "Álbum não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Album albumParaDeletar = new Album(titulo, 0, 0); // Apenas o título (ID) é necessário
+        albumService.deletar(albumParaDeletar);
+
+        carregarAlbumsNaTabela();
+        limparCampos();
+    }
+
+    private void preencherCampos() {
+        int row = albumTable.getSelectedRow();
+        if (row >= 0) {
+            txtTitulo.setText(tableModel.getValueAt(row, 0).toString());
+            txtAnoLancamento.setText(tableModel.getValueAt(row, 1).toString());
+            txtNumeroFaixas.setText(tableModel.getValueAt(row, 2).toString());
+        }
+    }
+
+    private void limparCampos() {
+        txtTitulo.setText("");
+        txtAnoLancamento.setText("");
+        txtNumeroFaixas.setText("");
+    }
+}
+</code></pre>
+
+<h2> Artista - GUI </h2>
+<pre><code class="language-java">
+package org.example.calculomedia.gui;
+
+import org.example.calculomedia.Artista;
+import org.example.calculomedia.service.ArtistaService;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.List;
+
+public class ArtistaGUI extends JPanel {
+    private ArtistaService artistaService = new ArtistaService();
+    private JTable artistaTable;
+    private DefaultTableModel tableModel;
+    private JTextField txtNomeCompleto, txtNacionalidade, txtAnoInicio;
+
+    public ArtistaGUI() {
+        setLayout(new BorderLayout(10, 10));
+        
+        String[] colunas = {"Nome Completo", "Nacionalidade", "Início Carreira"};
+        tableModel = new DefaultTableModel(colunas, 0);
+        artistaTable = new JTable(tableModel);
+        carregarArtistasNaTabela();
+        
+        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
+        JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+
+        txtNomeCompleto = new JTextField(20);
+        txtNacionalidade = new JTextField(20);
+        txtAnoInicio = new JTextField(20);
+
+        formPanel.add(new JLabel("Nome Completo:"));
+        formPanel.add(txtNomeCompleto);
+        formPanel.add(new JLabel("Nacionalidade:"));
+        formPanel.add(txtNacionalidade);
+        formPanel.add(new JLabel("Ano de início de carreira:"));
+        formPanel.add(txtAnoInicio);
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JButton btnSalvar = new JButton("Salvar");
+        JButton btnBuscar = new JButton("Recarregar ");
+        JButton btnAtualizar = new JButton("Atualizar");
+        JButton btnDeletar = new JButton("Deletar ");
+
+        buttonPanel.add(btnSalvar);
+        buttonPanel.add(btnBuscar);
+        buttonPanel.add(btnAtualizar);
+        buttonPanel.add(btnDeletar);
+
+        topPanel.add(formPanel, BorderLayout.NORTH);
+        topPanel.add(buttonPanel, BorderLayout.SOUTH);
+        
+        add(topPanel, BorderLayout.NORTH);
+        add(new JScrollPane(artistaTable), BorderLayout.CENTER);
+        
+        btnSalvar.addActionListener(e -> salvarArtista());
+        btnBuscar.addActionListener(e -> carregarArtistasNaTabela());
+        btnAtualizar.addActionListener(e -> atualizarArtista());
+        btnDeletar.addActionListener(e -> deletarArtista());
+        
+        artistaTable.getSelectionModel().addListSelectionListener(e -> preencherCampos());
+    }
+
+    private void carregarArtistasNaTabela() {
+        tableModel.setRowCount(0);
+        List<Artista> artistas = artistaService.buscarTodos();
+
+        for (Artista a : artistas) {
+            tableModel.addRow(new Object[]{a.getNomeCompleto(), a.getNacionalidade(), a.getAnoInicioCarreira()});
+        }
+    }
+
+    private void salvarArtista() {
+        try {
+            String nome = txtNomeCompleto.getText();
+            String nacionalidade = txtNacionalidade.getText();
+            int anoInicio = Integer.parseInt(txtAnoInicio.getText());
+
+            if (artistaService.buscarPorId(nome) != null) {
+                JOptionPane.showMessageDialog(this, "Artista com este nome já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Artista novoArtista = new Artista(nome, nacionalidade, anoInicio);
+            artistaService.salvar(novoArtista);
+            carregarArtistasNaTabela();
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "O ano deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void atualizarArtista() {
+        try {
+            String nome = txtNomeCompleto.getText();
+            String nacionalidade = txtNacionalidade.getText();
+            int anoInicio = Integer.parseInt(txtAnoInicio.getText());
+
+            Artista artistaAtualizado = new Artista(nome, nacionalidade, anoInicio);
+            artistaService.atualizar(artistaAtualizado);
+
+            carregarArtistasNaTabela();
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "O ano deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deletarArtista() {
+        String nome = txtNomeCompleto.getText();
+        if (artistaService.buscarPorId(nome) == null) {
+            JOptionPane.showMessageDialog(this, "Artista não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Artista artistaParaDeletar = new Artista(nome, "", 0); // Apenas o nome (ID) é necessário
+        artistaService.deletar(artistaParaDeletar);
+
+        carregarArtistasNaTabela();
+        limparCampos();
+    }
+
+    private void preencherCampos() {
+        int row = artistaTable.getSelectedRow();
+        if (row >= 0) {
+            txtNomeCompleto.setText(tableModel.getValueAt(row, 0).toString());
+            txtNacionalidade.setText(tableModel.getValueAt(row, 1).toString());
+            txtAnoInicio.setText(tableModel.getValueAt(row, 2).toString());
+        }
+    }
+
+    private void limparCampos() {
+        txtNomeCompleto.setText("");
+        txtNacionalidade.setText("");
+        txtAnoInicio.setText("");
+    }
+}
+</code></pre>
+
+<h2> DAO </h2>
+<pre><code class="language-java">
+ package org.example.calculomedia.dao;
+
+import java.util.List;
+
+public interface DAO<T> {
+    void salvar(T objeto);
+    T buscarPorId(String id);
+    void atualizar(T objeto);
+    void deletar(T objeto);
+    List<T> buscarTodos();
+}
+</code></pre>
 
 
 
