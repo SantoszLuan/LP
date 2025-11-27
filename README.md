@@ -1,7 +1,7 @@
 <h1 align="center"> Entrega 1 </h1>
 
 
-<h2> 1. Média </h2>
+<h2> 1. Média.java </h2>
 <pre><code class="language-java">
 package org.example.calculomedia;
 
@@ -124,7 +124,7 @@ public class MediaCalculo extends Application {
 
 </code></pre>
 
-<h2> 2. Música </h2>
+<h2> 2. Música.java </h2>
 <pre><code class="language-java">
 package org.example.calculomedia;
 
@@ -149,7 +149,7 @@ public class Musica implements Registravel {
 
 
 <h2> 3. Imagem — Vik Muniz </h2>
-<h3> Monalisa </h3>
+<h3> Monalisa.java </h3>
 <pre><code class="language-java">
       package org.example.calculomedia;
 
@@ -171,7 +171,7 @@ public class Monalisa implements Registravel {
 }
 </code></pre>
 
-<h3> Café </h3>
+<h3> Café.java </h3>
 
 <pre><code class="language-java">
       package org.example.calculomedia;
@@ -198,7 +198,7 @@ public class Cafe implements Registravel {
 
 <h2> 4. Imagem — Doodle </h2>
 
-<h3> Elefante </h3>
+<h3> Elefante.java </h3>
 <pre><code class="language-java">
  package org.example.calculomedia;
 
@@ -248,7 +248,7 @@ public class Predio implements Registravel {
 
 
 
-<h2> Main </h2>
+<h2> Main.java </h2>
 <pre><code class="language-java">
 package org.example.calculomedia;
 
@@ -412,7 +412,7 @@ public class App extends JFrame {
 }
 </code></pre>
 
-<h2> Registrável </h2>
+<h2> Registrável.java </h2>
 <pre><code class="language-java">
 package org.example.calculomedia;
 
@@ -428,706 +428,1417 @@ public interface Registravel {
 
 <h1 align="center"> Entrega 2 </h1>
 
-<h2> Main </h2>
+<h2> Main.java </h2>
 <pre><code class="language-java">
-  package org.example.calculomedia;
-
-import org.example.calculomedia.gui.PrincipalGUI; // Chama a nova GUI
-import javax.swing.SwingUtilities;
-
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Iniciando...");
-
-        SwingUtilities.invokeLater(() -> {
-            new PrincipalGUI().setVisible(true);
-        });
-    }
-}
-</code></pre>
-
-<h2> Musica </h2>
-<pre><code class="language-java">
-package org.example.calculomedia;
-
-public class Musica {
-    private String nome;
-    private String artista;
-    private int duracaoEmSegundos;
-
-    public Musica(String nome, String artista, int duracaoEmSegundos) {
-        this.nome = nome;
-        this.artista = artista;
-        this.duracaoEmSegundos = duracaoEmSegundos; // CORRIGIDO
-    }
-
-    public String getNome() { return nome; }
-    public String getArtista() { return artista; }
-    public void setArtista(String artista) { this.artista = artista; }
-    public int getDuracaoEmSegundos() { return duracaoEmSegundos; }
-    public void setDuracaoEmSegundos(int duracaoEmSegundos) { this.duracaoEmSegundos = duracaoEmSegundos; }
-
-    @Override
-    public String toString() {
-        return "Musica{Nome: " + nome + ", Artista: " + artista + ", Duração: " + duracaoEmSegundos + "s}";
-    }
-}
-</code></pre>
-
-<h2> Album </h2>
-<pre><code class="language-java">
- package org.example.calculomedia;
-
-public class Album {
-    private String titulo;
-    private int anoLancamento;
-    private int numeroDeFaixas;
-
-    public Album(String titulo, int anoLancamento, int numeroDeFaixas) {
-        this.titulo = titulo;
-        this.anoLancamento = anoLancamento;
-        this.numeroDeFaixas = numeroDeFaixas;
-    }
-
-    public String getTitulo() { return titulo; }
-    public int getAnoLancamento() { return anoLancamento; }
-    public void setAnoLancamento(int anoLancamento) { this.anoLancamento = anoLancamento; }
-    public int getNumeroDeFaixas() { return numeroDeFaixas; }
-    public void setNumeroDeFaixas(int numeroDeFaixas) { this.numeroDeFaixas = numeroDeFaixas; }
-
-    @Override
-    public String toString() {
-        return "Album{Título: " + titulo + ", Lançamento: " + anoLancamento + ", Faixas: " + numeroDeFaixas + "}";
-    }
-}
-</code></pre>
-
-<h2> Artista </h2>
-<pre><code class="language-java">
- package org.example.calculomedia;
-
-public class Artista {
-    
-    private String nomeCompleto; 
-    private String nacionalidade;
-    private int anoInicioCarreira;
-
-  
-    public Artista(String nomeCompleto, String nacionalidade, int anoInicioCarreira) {
-        this.nomeCompleto = nomeCompleto;
-        this.nacionalidade = nacionalidade;
-        this.anoInicioCarreira = anoInicioCarreira;
-    }
-
-   
-    public String getNomeCompleto() { return nomeCompleto; }
-    public String getNacionalidade() { return nacionalidade; }
-    public void setNacionalidade(String nacionalidade) { this.nacionalidade = nacionalidade; }
-    public int getAnoInicioCarreira() { return anoInicioCarreira; }
-    public void setAnoInicioCarreira(int anoInicioCarreira) { this.anoInicioCarreira = anoInicioCarreira; }
-
-    @Override
-    public String toString() {
-        return "Artista{Nome: " + nomeCompleto + ", País: " + nacionalidade + ", Início: " + anoInicioCarreira + "}";
-    }
-}
-</code></pre>
-
-<h2> Musica - Service </h2>
-<pre><code class="language-java">
-package org.example.calculomedia.service;
-
-import org.example.calculomedia.dao.DAO;
-import org.example.calculomedia.Musica;
+  import javax.swing.*;
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusicaService implements DAO<Musica> {
-    private static final List<Musica> REPOSITORIO_MUSICAS = new ArrayList<>();
+public class Main extends JFrame {
 
-    @Override
-    public void salvar(Musica musica) {
-        REPOSITORIO_MUSICAS.add(musica);
-    }
+    private static final String DB_URL = "jdbc:sqlite:MusicaDB.db";
 
-    @Override
-    public Musica buscarPorId(String nomeMusica) {
-        return REPOSITORIO_MUSICAS.stream()
-                .filter(m -> m.getNome().equals(nomeMusica))
-                .findFirst()
-                .orElse(null);
-    }
+    public Main() {
+        super("Musica - Waiting for the End");
 
-    @Override
-    public void atualizar(Musica musicaAtualizada) {
-        Musica musicaExistente = buscarPorId(musicaAtualizada.getNome());
-        if (musicaExistente != null) {
-            musicaExistente.setArtista(musicaAtualizada.getArtista());
-            musicaExistente.setDuracaoEmSegundos(musicaAtualizada.getDuracaoEmSegundos());
+        try {
+
+            // Cria o painel de abas
+            JTabbedPane tabbedPane = new JTabbedPane();
+
+            // Define os campos para cada classe
+            String[] camposVoz = {"Tom", "Revolta", "Melhoria (%)"};
+            String[] camposRitmo = {"Ouvir", "Palavras", "Vazio"};
+            String[] camposFogo = {"Sensação", "Fim", "Recomeçar"};
+
+            // Adiciona as abas utilizando o PainelCRUD
+            tabbedPane.addTab("Voz", new PainelCRUD("Voz", camposVoz));
+            tabbedPane.addTab("Ritmo", new PainelCRUD("Ritmo", camposRitmo));
+            tabbedPane.addTab("Fogo", new PainelCRUD("Fogo", camposFogo));
+
+            add(tabbedPane, BorderLayout.CENTER);
+
+        } catch (Exception e) {
+            //Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Erro ao iniciar o Painel: " + e.getMessage(), "Erro Fatal", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            System.exit(1);
         }
-    }
 
-    @Override
-    public void deletar(Musica musica) {
-        REPOSITORIO_MUSICAS.removeIf(m -> m.getNome().equals(musica.getNome()));
-    }
-
-    @Override
-    public List<Musica> buscarTodos() {
-        return new ArrayList<>(REPOSITORIO_MUSICAS);
-    }
-}
-</code></pre>
-
-<h2> Album - Service </h2>
-<pre><code class="language-java">
- package org.example.calculomedia.service;
-
-import org.example.calculomedia.dao.DAO;
-import org.example.calculomedia.Album;
-import java.util.ArrayList;
-import java.util.List;
-
-public class AlbumService implements DAO<Album> {
-    private static final List<Album> REPOSITORIO_ALBUNS = new ArrayList<>();
-
-    @Override
-    public void salvar(Album album) {
-        REPOSITORIO_ALBUNS.add(album);
-    }
-
-    @Override
-    public Album buscarPorId(String tituloAlbum) {
-        return REPOSITORIO_ALBUNS.stream()
-                .filter(a -> a.getTitulo().equals(tituloAlbum))
-                .findFirst()
-                .orElse(null);
-    }
-
-    @Override
-    public void atualizar(Album albumAtualizado) {
-        Album albumExistente = buscarPorId(albumAtualizado.getTitulo());
-        if (albumExistente != null) {
-            albumExistente.setAnoLancamento(albumAtualizado.getAnoLancamento());
-            albumExistente.setNumeroDeFaixas(albumAtualizado.getNumeroDeFaixas());
-        }
-    }
-
-    @Override
-    public void deletar(Album album) {
-        REPOSITORIO_ALBUNS.removeIf(a -> a.getTitulo().equals(album.getTitulo()));
-    }
-
-    @Override
-    public List<Album> buscarTodos() {
-        return new ArrayList<>(REPOSITORIO_ALBUNS);
-    }
-}
-</code></pre>
-
-<h2> Artista - Service </h2>
-<pre><code class="language-java">
- package org.example.calculomedia;
-
-public class Artista {
-
-    private String nomeCompleto;
-    private String nacionalidade;
-    private int anoInicioCarreira;
-
-
-    public Artista(String nomeCompleto, String nacionalidade, int anoInicioCarreira) {
-        this.nomeCompleto = nomeCompleto;
-        this.nacionalidade = nacionalidade;
-        this.anoInicioCarreira = anoInicioCarreira;
-    }
-
-
-    public String getNomeCompleto() { return nomeCompleto; }
-    public String getNacionalidade() { return nacionalidade; }
-    public void setNacionalidade(String nacionalidade) { this.nacionalidade = nacionalidade; }
-    public int getAnoInicioCarreira() { return anoInicioCarreira; }
-    public void setAnoInicioCarreira(int anoInicioCarreira) { this.anoInicioCarreira = anoInicioCarreira; }
-
-    @Override
-    public String toString() {
-        return "Artista{Nome: " + nomeCompleto + ", País: " + nacionalidade + ", Início: " + anoInicioCarreira + "}";
-    }
-}
-</code></pre>
-
-<h2> Princiapl GUI </h2>
-<pre><code class="language-java">
- package org.example.calculomedia.gui;
-
-import javax.swing.*;
-import java.awt.*;
-
-public class PrincipalGUI extends JFrame {
-
-    public PrincipalGUI() {
-        super("Gerenciamento Completo de Músicas, Álbuns e Artistas");
+        // Configurações da Janela Principal
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JTabbedPane tabbedPane = new JTabbedPane();
-
-        
-        tabbedPane.addTab("Músicas", new MusicaGUI());
-
-     
-        tabbedPane.addTab("Álbuns", new AlbumGUI());
-
-       
-        tabbedPane.addTab("Artistas", new ArtistaGUI()); // <-- NOVA ABA AQUI
-
-        add(tabbedPane, BorderLayout.CENTER);
-        setSize(800, 550); // Aumentei o tamanho para 3 abas
+        setSize(800, 500);
         setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        // Inicializa o banco de dados antes de iniciar a GUI
+        criarTabelas();
+
+        // Gera os CSVs iniciais ao carregar o sistema.
+        try {
+            exportarParaCSV("Vozes", "Voz.csv");
+            exportarParaCSV("Ritmos", "Ritmo.csv");
+            exportarParaCSV("Fogos", "Fogo.csv");
+        } catch (SQLException | java.io.IOException e) {
+            System.err.println("Aviso: Falha ao gerar CSV inicial. Arquivos serão criados após a primeira alteração.");
+        }
+
+        SwingUtilities.invokeLater(Main::new);
+    }
+
+
+    // Conexão com SQLite
+    private static Connection conectar() throws SQLException {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver JDBC SQLite não encontrado.");
+        }
+        return DriverManager.getConnection(DB_URL);
+    }
+
+    //Cria as tabelas
+    public static void criarTabelas() {
+        String sqlVoz = "CREATE TABLE IF NOT EXISTS Vozes (id INTEGER PRIMARY KEY, tom TEXT, revolta TEXT, melhoria INTEGER);";
+        String sqlRitmo = "CREATE TABLE IF NOT EXISTS Ritmos (id INTEGER PRIMARY KEY, ouvir TEXT, palavras TEXT, vazio TEXT);";
+        String sqlFogo = "CREATE TABLE IF NOT EXISTS Fogos (id INTEGER PRIMARY KEY, sensacao TEXT, fim TEXT, recomecar TEXT);";
+
+        try (Connection conn = conectar();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sqlVoz);
+            stmt.execute(sqlRitmo);
+            stmt.execute(sqlFogo);
+        } catch (SQLException e) {
+            //Mensagem de erro se não conseguir criar as tabelas
+            System.err.println("Erro ao criar tabelas: " + e.getMessage());
+        }
+    }
+
+    // CRUD - Voz
+    public static void inserirVoz(Voz voz) {
+        String sql = "INSERT INTO Vozes(tom, revolta, melhoria) VALUES(?, ?, ?)";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pstmt.setString(1, voz.getTom()); pstmt.setString(2, voz.getRevolta()); pstmt.setInt(3, voz.getMelhoria());
+            pstmt.executeUpdate();
+            try (ResultSet rs = pstmt.getGeneratedKeys()) { if (rs.next()) { voz.setId(rs.getInt(1)); } }
+
+            // Exporta os dados para o csv
+            exportarParaCSV("Vozes", "Voz.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao inserir Voz ou exportar CSV: " + e.getMessage()); }
+    }
+    public static List<Voz> listarTodasVozes() {
+        String sql = "SELECT id, tom, revolta, melhoria FROM Vozes";
+        List<Voz> vozes = new ArrayList<>();
+        try (Connection conn = conectar(); Statement stmt  = conn.createStatement(); ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) { vozes.add(new Voz(rs.getInt("id"), rs.getString("tom"), rs.getString("revolta"), rs.getInt("melhoria"))); }
+        } catch (SQLException e) { System.err.println("Erro ao listar Vozes: " + e.getMessage()); }
+        return vozes;
+    }
+    public static void atualizarVoz(Voz voz) {
+        String sql = "UPDATE Vozes SET tom = ?, revolta = ?, melhoria = ? WHERE id = ?";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, voz.getTom()); pstmt.setString(2, voz.getRevolta()); pstmt.setInt(3, voz.getMelhoria()); pstmt.setInt(4, voz.getId());
+            pstmt.executeUpdate();
+
+            exportarParaCSV("Vozes", "Voz.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao atualizar Voz ou exportar CSV: " + e.getMessage()); }
+    }
+    public static void deletarVoz(int id) {
+        String sql = "DELETE FROM Vozes WHERE id = ?";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id); pstmt.executeUpdate();
+
+            exportarParaCSV("Vozes", "Voz.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao deletar Voz ou exportar CSV: " + e.getMessage()); }
+    }
+
+    // CRUD - Ritmo
+    public static void inserirRitmo(Ritmo ritmo) {
+        String sql = "INSERT INTO Ritmos(ouvir, palavras, vazio) VALUES(?, ?, ?)";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pstmt.setString(1, ritmo.getOuvir()); pstmt.setString(2, ritmo.getPalavras()); pstmt.setString(3, ritmo.getVazio());
+            pstmt.executeUpdate();
+            try (ResultSet rs = pstmt.getGeneratedKeys()) { if (rs.next()) { ritmo.setId(rs.getInt(1)); } }
+
+            exportarParaCSV("Ritmos", "Ritmo.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao inserir Ritmo ou exportar CSV: " + e.getMessage()); }
+    }
+    public static List<Ritmo> listarTodosRitmos() {
+        String sql = "SELECT id, ouvir, palavras, vazio FROM Ritmos";
+        List<Ritmo> ritmos = new ArrayList<>();
+        try (Connection conn = conectar(); Statement stmt  = conn.createStatement(); ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) { ritmos.add(new Ritmo(rs.getInt("id"), rs.getString("ouvir"), rs.getString("palavras"), rs.getString("vazio"))); }
+        } catch (SQLException e) { System.err.println("Erro ao listar Ritmos: " + e.getMessage()); }
+        return ritmos;
+    }
+    public static void atualizarRitmo(Ritmo ritmo) {
+        String sql = "UPDATE Ritmos SET ouvir = ?, palavras = ?, vazio = ? WHERE id = ?";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, ritmo.getOuvir()); pstmt.setString(2, ritmo.getPalavras()); pstmt.setString(3, ritmo.getVazio()); pstmt.setInt(4, ritmo.getId());
+            pstmt.executeUpdate();
+
+            exportarParaCSV("Ritmos", "Ritmo.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao atualizar Ritmo ou exportar CSV: " + e.getMessage()); }
+    }
+    public static void deletarRitmo(int id) {
+        String sql = "DELETE FROM Ritmos WHERE id = ?";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id); pstmt.executeUpdate();
+
+            exportarParaCSV("Ritmos", "Ritmo.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao deletar Ritmo ou exportar CSV: " + e.getMessage()); }
+    }
+
+    // CRUD - Fogo
+    public static void inserirFogo(Fogo fogo) {
+        String sql = "INSERT INTO Fogos(sensacao, fim, recomecar) VALUES(?, ?, ?)";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pstmt.setString(1, fogo.getSensacao()); pstmt.setString(2, fogo.getFim()); pstmt.setString(3, fogo.getRecomecar());
+            pstmt.executeUpdate();
+            try (ResultSet rs = pstmt.getGeneratedKeys()) { if (rs.next()) { fogo.setId(rs.getInt(1)); } }
+
+            exportarParaCSV("Fogos", "Fogo.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao inserir Fogo ou exportar CSV: " + e.getMessage()); }
+    }
+    public static List<Fogo> listarTodosFogos() {
+        String sql = "SELECT id, sensacao, fim, recomecar FROM Fogos";
+        List<Fogo> fogos = new ArrayList<>();
+        try (Connection conn = conectar(); Statement stmt  = conn.createStatement(); ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) { fogos.add(new Fogo(rs.getInt("id"), rs.getString("sensacao"), rs.getString("fim"), rs.getString("recomecar"))); }
+        } catch (SQLException e) { System.err.println("Erro ao listar Fogos: " + e.getMessage()); }
+        return fogos;
+    }
+    public static void atualizarFogo(Fogo fogo) {
+        String sql = "UPDATE Fogos SET sensacao = ?, fim = ?, recomecar = ? WHERE id = ?";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, fogo.getSensacao()); pstmt.setString(2, fogo.getFim()); pstmt.setString(3, fogo.getRecomecar()); pstmt.setInt(4, fogo.getId());
+            pstmt.executeUpdate();
+
+            exportarParaCSV("Fogos", "Fogo.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao atualizar Fogo ou exportar CSV: " + e.getMessage()); }
+    }
+    public static void deletarFogo(int id) {
+        String sql = "DELETE FROM Fogos WHERE id = ?";
+        try (Connection conn = conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id); pstmt.executeUpdate();
+
+            exportarParaCSV("Fogos", "Fogo.csv");
+
+        } catch (SQLException | java.io.IOException e) { System.err.println("Erro ao deletar Fogo ou exportar CSV: " + e.getMessage()); }
+    }
+
+
+    public static void exportarParaCSV(String tableName, String filePath) throws SQLException, java.io.IOException {
+        String sql = "SELECT * FROM " + tableName;
+
+        try (Connection conn = conectar();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql);
+             java.io.FileWriter writer = new java.io.FileWriter(filePath)) {
+
+            // 1. Escreve os nomes das colunas
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            for (int i = 1; i <= columnCount; i++) {
+                writer.append(metaData.getColumnName(i));
+                if (i < columnCount) {
+                    writer.append(",");
+                }
+            }
+            writer.append("\n");
+
+            // 2. Escreve os dados
+            while (rs.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    String value = rs.getString(i);
+
+                    // Adiciona aspas se o valor contiver vírgula ou aspas
+                    if (value != null && (value.contains(",") || value.contains("\""))) {
+                        value = "\"" + value.replace("\"", "\"\"") + "\"";
+                    }
+                    writer.append(value != null ? value : "");
+                    if (i < columnCount) {
+                        writer.append(",");
+                    }
+                }
+                writer.append("\n");
+            }
+
+            writer.flush();
+
+        } catch (SQLException e) {
+            throw new SQLException("Erro de SQL durante a exportação: " + e.getMessage());
+        } catch (java.io.IOException e) {
+            throw new java.io.IOException("Erro de I/O ao escrever o arquivo CSV: " + e.getMessage());
+        }
     }
 }
 </code></pre>
 
-<h2> Musica - GUI </h2>
+<h2> PainelCRUD.java </h2>
 <pre><code class="language-java">
- package org.example.calculomedia.gui;
-
-import org.example.calculomedia.Musica;
-import org.example.calculomedia.service.MusicaService;
-import javax.swing.*;
+ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
+public class PainelCRUD extends JPanel {
 
-public class MusicaGUI extends JPanel {
-    private MusicaService musicaService = new MusicaService();
-    private JTable musicTable;
-    private DefaultTableModel tableModel;
-    private JTextField txtNome, txtArtista, txtDuracao;
-
-    public MusicaGUI() {
-        setLayout(new BorderLayout(10, 10));
-
-        
-        String[] colunas = {"Nome", "Artista", "Duração"};
-        tableModel = new DefaultTableModel(colunas, 0);
-        musicTable = new JTable(tableModel);
-        carregarMusicasNaTabela();
-
-      
-        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
-        JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
-
-        txtNome = new JTextField(20);
-        txtArtista = new JTextField(20);
-        txtDuracao = new JTextField(20);
-
-        formPanel.add(new JLabel("Nome:"));
-        formPanel.add(txtNome);
-        formPanel.add(new JLabel("Artista:"));
-        formPanel.add(txtArtista);
-        formPanel.add(new JLabel("Duração (Segundos):"));
-        formPanel.add(txtDuracao);
-
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        JButton btnSalvar = new JButton("Salvar");
-        JButton btnBuscar = new JButton("Recarregar");
-        JButton btnAtualizar = new JButton("Atualizar");
-        JButton btnDeletar = new JButton("Deletar");
-
-        buttonPanel.add(btnSalvar);
-        buttonPanel.add(btnBuscar);
-        buttonPanel.add(btnAtualizar);
-        buttonPanel.add(btnDeletar);
-
-        topPanel.add(formPanel, BorderLayout.NORTH);
-        topPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-     al
-        add(topPanel, BorderLayout.NORTH);
-        add(new JScrollPane(musicTable), BorderLayout.CENTER);
-
-   
-        btnSalvar.addActionListener(e -> salvarMusica());
-        btnBuscar.addActionListener(e -> carregarMusicasNaTabela());
-        btnAtualizar.addActionListener(e -> atualizarMusica());
-        btnDeletar.addActionListener(e -> deletarMusica());
+    private final DefaultTableModel tableModel;
+    private final JTable dataTable;
+    private final String[] fieldNames;
+    private final Class<?> dataClass;
+    private final JTextField[] inputFields;
+    private final Method loadMethod;
+    private final Method insertMethod;
+    private final Method updateMethod;
+    private final Method deleteMethod;
 
 
-        musicTable.getSelectionModel().addListSelectionListener(e -> preencherCampos());
-    }
+    public PainelCRUD(String className, String[] fieldNames) throws Exception {
+        this.fieldNames = fieldNames;
+        this.dataClass = Class.forName(className);
 
-    private void carregarMusicasNaTabela() {
-        tableModel.setRowCount(0);
-        List<Musica> musicas = musicaService.buscarTodos();
-        for (Musica m : musicas) {
-            tableModel.addRow(new Object[]{m.getNome(), m.getArtista(), m.getDuracaoEmSegundos()});
+        // Configurar o Modelo da Tabela
+        String[] columnNames = new String[fieldNames.length + 2];
+        columnNames[0] = "ID";
+        System.arraycopy(fieldNames, 0, columnNames, 1, fieldNames.length);
+        columnNames[fieldNames.length + 1] = "Método";
+
+        tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+        dataTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(dataTable);
+        scrollPane.setPreferredSize(new Dimension(700, 250));
+
+        dataTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && dataTable.getSelectedRow() != -1) {
+                preencherCamposComSelecao();
+            }
+        });
+
+        // Configurar os Campos de Entrada
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        inputFields = new JTextField[fieldNames.length];
+        for (int i = 0; i < fieldNames.length; i++) {
+            inputFields[i] = new JTextField(20);
+            gbc.gridx = 0; gbc.gridy = i; inputPanel.add(new JLabel(fieldNames[i] + ":"), gbc);
+            gbc.gridx = 1; gbc.gridy = i; inputPanel.add(inputFields[i], gbc);
         }
+
+        // Configurar os Botões
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 15));
+        JButton addButton = new JButton("Adicionar");
+        JButton updateButton = new JButton("Atualizar");
+        JButton deleteButton = new JButton("Remover");
+        JButton refreshButton = new JButton("Recarregar");
+        JButton clearButton = new JButton("Limpar Campos");
+
+        buttonPanel.add(addButton);
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(refreshButton);
+        buttonPanel.add(clearButton);
+
+        // 4. Layout Principal
+        setLayout(new BorderLayout(10, 10));
+        add(inputPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        // Tradutor que garante que o nome da função seja montado corretamente a cada vez que troca de aba.
+        String pluralizedName;
+        String allOrTodas;
+
+        if (className.equals("Voz")) {
+            pluralizedName = "Vozes";
+            allOrTodas = "Todas";
+        } else if (className.equals("Ritmo")) {
+            pluralizedName = "Ritmos";
+            allOrTodas = "Todos";
+        } else { // Fogo
+            pluralizedName = "Fogos";
+            allOrTodas = "Todos";
+        }
+
+        //Listar : listarTodasVozes, listarTodosRitmos, listarTodosFogos
+        loadMethod = Main.class.getMethod("listar" + allOrTodas + pluralizedName);
+
+        insertMethod = Main.class.getMethod("inserir" + className, dataClass);
+        updateMethod = Main.class.getMethod("atualizar" + className, dataClass);
+        deleteMethod = Main.class.getMethod("deletar" + className, int.class);
+
+        // Ações dos Botões
+        addButton.addActionListener(this::adicionarRegistro);
+        updateButton.addActionListener(this::atualizarRegistro);
+        deleteButton.addActionListener(this::deletarRegistro);
+        refreshButton.addActionListener(e -> carregarRegistros());
+        clearButton.addActionListener(e -> limparCampos());
+
+        carregarRegistros();
     }
 
-    private void salvarMusica() {
-        try {
-            String nome = txtNome.getText();
-            String artista = txtArtista.getText();
-            int duracao = Integer.parseInt(txtDuracao.getText());
+    // Métodos de Ação
 
-            if (musicaService.buscarPorId(nome) != null) {
-                JOptionPane.showMessageDialog(this, "Música já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
+    private void adicionarRegistro(ActionEvent e) {
+        try {
+            Object[] simpleArgs = new Object[inputFields.length];
+            Class<?>[] simpleTypes = new Class<?>[inputFields.length];
+
+            for (int i = 0; i < inputFields.length; i++) {
+                String text = inputFields[i].getText();
+                if (text.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Preencha todos os campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if (fieldNames[i].toLowerCase().contains("melhoria")) {
+                    simpleArgs[i] = Integer.parseInt(text);
+                    simpleTypes[i] = int.class;
+                } else {
+                    simpleArgs[i] = text;
+                    simpleTypes[i] = String.class;
+                }
             }
 
-            Musica novaMusica = new Musica(nome, artista, duracao);
-            musicaService.salvar(novaMusica);
-            carregarMusicasNaTabela();
+            // Construtor sem ID
+            Constructor<?> constructor = dataClass.getConstructor(simpleTypes);
+            Object novoObjeto = constructor.newInstance(simpleArgs);
+
+            insertMethod.invoke(null, novoObjeto);
+            JOptionPane.showMessageDialog(this, dataClass.getSimpleName() + " adicionado com sucesso!");
             limparCampos();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Duração deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
+            carregarRegistros();
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Campo numérico inválido. Verifique Melhoria (%).", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (InvocationTargetException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar. Erro interno: " + ex.getTargetException().getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar registro: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void atualizarMusica() {
-        try {
-            String nome = txtNome.getText();
-            String artista = txtArtista.getText();
-            int duracao = Integer.parseInt(txtDuracao.getText());
-
-            Musica musicaAtualizada = new Musica(nome, artista, duracao);
-            musicaService.atualizar(musicaAtualizada);
-
-            carregarMusicasNaTabela();
-            limparCampos();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Duração deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void deletarMusica() {
-        String nome = txtNome.getText();
-        if (musicaService.buscarPorId(nome) == null) {
-            JOptionPane.showMessageDialog(this, "Música não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+    private void atualizarRegistro(ActionEvent e) {
+        int selectedRow = dataTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para atualizar.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        try {
+            int id = (int) tableModel.getValueAt(selectedRow, 0);
 
-        Musica musicaParaDeletar = new Musica(nome, "", 0);
-        musicaService.deletar(musicaParaDeletar);
+            Object[] args = new Object[inputFields.length + 1];
+            Class<?>[] paramTypes = new Class<?>[inputFields.length + 1];
 
-        carregarMusicasNaTabela();
-        limparCampos();
+            args[0] = id;
+            paramTypes[0] = int.class;
+
+            for (int i = 0; i < inputFields.length; i++) {
+                String text = inputFields[i].getText();
+                if (text.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Preencha todos os campos para atualização.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if (fieldNames[i].toLowerCase().contains("melhoria")) {
+                    args[i + 1] = Integer.parseInt(text);
+                    paramTypes[i + 1] = int.class;
+                } else {
+                    args[i + 1] = text;
+                    paramTypes[i + 1] = String.class;
+                }
+            }
+
+            // Construtor com ID
+            Constructor<?> constructor = dataClass.getConstructor(paramTypes);
+            Object objetoAtualizado = constructor.newInstance(args);
+
+            updateMethod.invoke(null, objetoAtualizado);
+            JOptionPane.showMessageDialog(this, "Registro ID " + id + " atualizado com sucesso!");
+            limparCampos();
+            carregarRegistros();
+
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Melhoria (%) deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (InvocationTargetException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar. Erro interno: " + ex.getTargetException().getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    private void preencherCampos() {
-        int row = musicTable.getSelectedRow();
-        if (row >= 0) {
-            txtNome.setText(tableModel.getValueAt(row, 0).toString());
-            txtArtista.setText(tableModel.getValueAt(row, 1).toString());
-            txtDuracao.setText(tableModel.getValueAt(row, 2).toString());
+    private void deletarRegistro(ActionEvent e) {
+        int selectedRow = dataTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para remover.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int id = (int) tableModel.getValueAt(selectedRow, 0);
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover o registro ID " + id + "?", "Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                deleteMethod.invoke(null, id);
+                JOptionPane.showMessageDialog(this, "Registro ID " + id + " removido com sucesso!");
+                limparCampos();
+                carregarRegistros();
+            } catch (InvocationTargetException ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover. Erro interno: " + ex.getTargetException().getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void carregarRegistros() {
+        tableModel.setRowCount(0);
+        try {
+            List<?> registros = (List<?>) loadMethod.invoke(null);
+
+            for (Object obj : registros) {
+                Object[] rowData = new Object[fieldNames.length + 2];
+
+                Method getIdMethod = obj.getClass().getMethod("getId");
+                rowData[0] = getIdMethod.invoke(obj);
+
+                for (int i = 0; i < fieldNames.length; i++) {
+                    String fieldName = fieldNames[i].split(" ")[0].toLowerCase();
+                    Method getter = obj.getClass().getMethod("get" + capitalize(fieldName));
+                    rowData[i + 1] = getter.invoke(obj);
+                }
+
+                Method extraMethod;
+                String className = obj.getClass().getSimpleName();
+
+                if (className.equals("Voz")) {
+                    extraMethod = obj.getClass().getMethod("ouvirTom");
+                } else if (className.equals("Ritmo")) {
+                    extraMethod = obj.getClass().getMethod("parecerFirme");
+                } else { // Fogo
+                    extraMethod = obj.getClass().getMethod("acharSensacao");
+                }
+                rowData[fieldNames.length + 1] = extraMethod.invoke(obj);
+
+                tableModel.addRow(rowData);
+            }
+
+        } catch (Exception ex) {
+            // Mensagem de erro ao iniciar
+            System.err.println("Erro ao carregar registros: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao iniciar o Painel: " + ex.getMessage(), "Erro Fatal", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void preencherCamposComSelecao() {
+        int selectedRow = dataTable.getSelectedRow();
+        if (selectedRow != -1) {
+            for (int i = 0; i < inputFields.length; i++) {
+                inputFields[i].setText(String.valueOf(tableModel.getValueAt(selectedRow, i + 1)));
+            }
         }
     }
 
     private void limparCampos() {
-        txtNome.setText("");
-        txtArtista.setText("");
-        txtDuracao.setText("");
+        for (JTextField field : inputFields) {
+            field.setText("");
+        }
+        dataTable.clearSelection();
+    }
+
+    private String capitalize(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        if (str.contains("(")) {
+            str = str.substring(0, str.indexOf("(")).trim();
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }
 </code></pre>
 
-<h2> Album - GUI </h2>
+<h2> Voz.java </h2>
 <pre><code class="language-java">
- package org.example.calculomedia.gui;
-
-import org.example.calculomedia.Album;
-import org.example.calculomedia.service.AlbumService;
-import javax.swing.*;
+ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
-public class AlbumGUI extends JPanel {
-    private AlbumService albumService = new AlbumService();
-    private JTable albumTable;
-    private DefaultTableModel tableModel;
-    private JTextField txtTitulo, txtAnoLancamento, txtNumeroFaixas;
+public class PainelCRUD extends JPanel {
 
-    public AlbumGUI() {
-        setLayout(new BorderLayout(10, 10));
+    private final DefaultTableModel tableModel;
+    private final JTable dataTable;
+    private final String[] fieldNames;
+    private final Class<?> dataClass;
+    private final JTextField[] inputFields;
+    private final Method loadMethod;
+    private final Method insertMethod;
+    private final Method updateMethod;
+    private final Method deleteMethod;
 
-        
-        String[] colunas = {"Título", "Ano de Lançamento", "Nº Faixas"};
-        tableModel = new DefaultTableModel(colunas, 0);
-        albumTable = new JTable(tableModel);
-        carregarAlbumsNaTabela();
 
-    
-        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
-        JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+    public PainelCRUD(String className, String[] fieldNames) throws Exception {
+        this.fieldNames = fieldNames;
+        this.dataClass = Class.forName(className);
 
-        txtTitulo = new JTextField(20);
-        txtAnoLancamento = new JTextField(20);
-        txtNumeroFaixas = new JTextField(20);
+        // Configurar o Modelo da Tabela
+        String[] columnNames = new String[fieldNames.length + 2];
+        columnNames[0] = "ID";
+        System.arraycopy(fieldNames, 0, columnNames, 1, fieldNames.length);
+        columnNames[fieldNames.length + 1] = "Método";
 
-        formPanel.add(new JLabel("Título:"));
-        formPanel.add(txtTitulo);
-        formPanel.add(new JLabel("Ano de Lançamento:"));
-        formPanel.add(txtAnoLancamento);
-        formPanel.add(new JLabel("Número de Faixas:"));
-        formPanel.add(txtNumeroFaixas);
+        tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+        dataTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(dataTable);
+        scrollPane.setPreferredSize(new Dimension(700, 250));
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        JButton btnSalvar = new JButton("Salvar");
-        JButton btnBuscar = new JButton("Recarregar");
-        JButton btnAtualizar = new JButton("Atualizar");
-        JButton btnDeletar = new JButton("Deletar");
+        dataTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && dataTable.getSelectedRow() != -1) {
+                preencherCamposComSelecao();
+            }
+        });
 
-        buttonPanel.add(btnSalvar);
-        buttonPanel.add(btnBuscar);
-        buttonPanel.add(btnAtualizar);
-        buttonPanel.add(btnDeletar);
+        // Configurar os Campos de Entrada
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        topPanel.add(formPanel, BorderLayout.NORTH);
-        topPanel.add(buttonPanel, BorderLayout.SOUTH);
-        
-        add(topPanel, BorderLayout.NORTH);
-        add(new JScrollPane(albumTable), BorderLayout.CENTER);
-        
-        btnSalvar.addActionListener(e -> salvarAlbum());
-        btnBuscar.addActionListener(e -> carregarAlbumsNaTabela());
-        btnAtualizar.addActionListener(e -> atualizarAlbum());
-        btnDeletar.addActionListener(e -> deletarAlbum());
-        
-        albumTable.getSelectionModel().addListSelectionListener(e -> preencherCampos());
-    }
-
-    private void carregarAlbumsNaTabela() {
-        tableModel.setRowCount(0);
-        List<Album> albums = albumService.buscarTodos();
-
-        for (Album a : albums) {
-            tableModel.addRow(new Object[]{a.getTitulo(), a.getAnoLancamento(), a.getNumeroDeFaixas()});
+        inputFields = new JTextField[fieldNames.length];
+        for (int i = 0; i < fieldNames.length; i++) {
+            inputFields[i] = new JTextField(20);
+            gbc.gridx = 0; gbc.gridy = i; inputPanel.add(new JLabel(fieldNames[i] + ":"), gbc);
+            gbc.gridx = 1; gbc.gridy = i; inputPanel.add(inputFields[i], gbc);
         }
+
+        // Configurar os Botões
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 15));
+        JButton addButton = new JButton("Adicionar");
+        JButton updateButton = new JButton("Atualizar");
+        JButton deleteButton = new JButton("Remover");
+        JButton refreshButton = new JButton("Recarregar");
+        JButton clearButton = new JButton("Limpar Campos");
+
+        buttonPanel.add(addButton);
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(refreshButton);
+        buttonPanel.add(clearButton);
+
+        // 4. Layout Principal
+        setLayout(new BorderLayout(10, 10));
+        add(inputPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        // Tradutor que garante que o nome da função seja montado corretamente a cada vez que troca de aba.
+        String pluralizedName;
+        String allOrTodas;
+
+        if (className.equals("Voz")) {
+            pluralizedName = "Vozes";
+            allOrTodas = "Todas";
+        } else if (className.equals("Ritmo")) {
+            pluralizedName = "Ritmos";
+            allOrTodas = "Todos";
+        } else { // Fogo
+            pluralizedName = "Fogos";
+            allOrTodas = "Todos";
+        }
+
+        //Listar : listarTodasVozes, listarTodosRitmos, listarTodosFogos
+        loadMethod = Main.class.getMethod("listar" + allOrTodas + pluralizedName);
+
+        insertMethod = Main.class.getMethod("inserir" + className, dataClass);
+        updateMethod = Main.class.getMethod("atualizar" + className, dataClass);
+        deleteMethod = Main.class.getMethod("deletar" + className, int.class);
+
+        // Ações dos Botões
+        addButton.addActionListener(this::adicionarRegistro);
+        updateButton.addActionListener(this::atualizarRegistro);
+        deleteButton.addActionListener(this::deletarRegistro);
+        refreshButton.addActionListener(e -> carregarRegistros());
+        clearButton.addActionListener(e -> limparCampos());
+
+        carregarRegistros();
     }
 
-    private void salvarAlbum() {
-        try {
-            String titulo = txtTitulo.getText();
-            int anoLancamento = Integer.parseInt(txtAnoLancamento.getText());
-            int numeroFaixas = Integer.parseInt(txtNumeroFaixas.getText());
+    // Métodos de Ação
 
-            if (albumService.buscarPorId(titulo) != null) {
-                JOptionPane.showMessageDialog(this, "Álbum com este título já existe!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
+    private void adicionarRegistro(ActionEvent e) {
+        try {
+            Object[] simpleArgs = new Object[inputFields.length];
+            Class<?>[] simpleTypes = new Class<?>[inputFields.length];
+
+            for (int i = 0; i < inputFields.length; i++) {
+                String text = inputFields[i].getText();
+                if (text.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Preencha todos os campos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if (fieldNames[i].toLowerCase().contains("melhoria")) {
+                    simpleArgs[i] = Integer.parseInt(text);
+                    simpleTypes[i] = int.class;
+                } else {
+                    simpleArgs[i] = text;
+                    simpleTypes[i] = String.class;
+                }
             }
 
-            Album novoAlbum = new Album(titulo, anoLancamento, numeroFaixas);
-            albumService.salvar(novoAlbum);
-            carregarAlbumsNaTabela();
+            // Construtor sem ID
+            Constructor<?> constructor = dataClass.getConstructor(simpleTypes);
+            Object novoObjeto = constructor.newInstance(simpleArgs);
+
+            insertMethod.invoke(null, novoObjeto);
+            JOptionPane.showMessageDialog(this, dataClass.getSimpleName() + " adicionado com sucesso!");
             limparCampos();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Ano e número de faixas devem ser números inteiros!", "Erro", JOptionPane.ERROR_MESSAGE);
+            carregarRegistros();
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Campo numérico inválido. Verifique Melhoria (%).", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (InvocationTargetException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar. Erro interno: " + ex.getTargetException().getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar registro: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void atualizarAlbum() {
-        try {
-            String titulo = txtTitulo.getText();
-            int anoLancamento = Integer.parseInt(txtAnoLancamento.getText());
-            int numeroFaixas = Integer.parseInt(txtNumeroFaixas.getText());
-
-            Album albumAtualizado = new Album(titulo, anoLancamento, numeroFaixas);
-            albumService.atualizar(albumAtualizado);
-
-            carregarAlbumsNaTabela();
-            limparCampos();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Ano e número de faixas devem ser números inteiros!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void deletarAlbum() {
-        String titulo = txtTitulo.getText();
-        if (albumService.buscarPorId(titulo) == null) {
-            JOptionPane.showMessageDialog(this, "Álbum não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+    private void atualizarRegistro(ActionEvent e) {
+        int selectedRow = dataTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para atualizar.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        try {
+            int id = (int) tableModel.getValueAt(selectedRow, 0);
 
-        Album albumParaDeletar = new Album(titulo, 0, 0); // Apenas o título (ID) é necessário
-        albumService.deletar(albumParaDeletar);
+            Object[] args = new Object[inputFields.length + 1];
+            Class<?>[] paramTypes = new Class<?>[inputFields.length + 1];
 
-        carregarAlbumsNaTabela();
-        limparCampos();
+            args[0] = id;
+            paramTypes[0] = int.class;
+
+            for (int i = 0; i < inputFields.length; i++) {
+                String text = inputFields[i].getText();
+                if (text.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Preencha todos os campos para atualização.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if (fieldNames[i].toLowerCase().contains("melhoria")) {
+                    args[i + 1] = Integer.parseInt(text);
+                    paramTypes[i + 1] = int.class;
+                } else {
+                    args[i + 1] = text;
+                    paramTypes[i + 1] = String.class;
+                }
+            }
+
+            // Construtor com ID
+            Constructor<?> constructor = dataClass.getConstructor(paramTypes);
+            Object objetoAtualizado = constructor.newInstance(args);
+
+            updateMethod.invoke(null, objetoAtualizado);
+            JOptionPane.showMessageDialog(this, "Registro ID " + id + " atualizado com sucesso!");
+            limparCampos();
+            carregarRegistros();
+
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Melhoria (%) deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (InvocationTargetException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar. Erro interno: " + ex.getTargetException().getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    private void preencherCampos() {
-        int row = albumTable.getSelectedRow();
-        if (row >= 0) {
-            txtTitulo.setText(tableModel.getValueAt(row, 0).toString());
-            txtAnoLancamento.setText(tableModel.getValueAt(row, 1).toString());
-            txtNumeroFaixas.setText(tableModel.getValueAt(row, 2).toString());
+    private void deletarRegistro(ActionEvent e) {
+        int selectedRow = dataTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para remover.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int id = (int) tableModel.getValueAt(selectedRow, 0);
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover o registro ID " + id + "?", "Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                deleteMethod.invoke(null, id);
+                JOptionPane.showMessageDialog(this, "Registro ID " + id + " removido com sucesso!");
+                limparCampos();
+                carregarRegistros();
+            } catch (InvocationTargetException ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover. Erro interno: " + ex.getTargetException().getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void carregarRegistros() {
+        tableModel.setRowCount(0);
+        try {
+            List<?> registros = (List<?>) loadMethod.invoke(null);
+
+            for (Object obj : registros) {
+                Object[] rowData = new Object[fieldNames.length + 2];
+
+                Method getIdMethod = obj.getClass().getMethod("getId");
+                rowData[0] = getIdMethod.invoke(obj);
+
+                for (int i = 0; i < fieldNames.length; i++) {
+                    String fieldName = fieldNames[i].split(" ")[0].toLowerCase();
+                    Method getter = obj.getClass().getMethod("get" + capitalize(fieldName));
+                    rowData[i + 1] = getter.invoke(obj);
+                }
+
+                Method extraMethod;
+                String className = obj.getClass().getSimpleName();
+
+                if (className.equals("Voz")) {
+                    extraMethod = obj.getClass().getMethod("ouvirTom");
+                } else if (className.equals("Ritmo")) {
+                    extraMethod = obj.getClass().getMethod("parecerFirme");
+                } else { // Fogo
+                    extraMethod = obj.getClass().getMethod("acharSensacao");
+                }
+                rowData[fieldNames.length + 1] = extraMethod.invoke(obj);
+
+                tableModel.addRow(rowData);
+            }
+
+        } catch (Exception ex) {
+            // Mensagem de erro ao iniciar
+            System.err.println("Erro ao carregar registros: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro ao iniciar o Painel: " + ex.getMessage(), "Erro Fatal", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void preencherCamposComSelecao() {
+        int selectedRow = dataTable.getSelectedRow();
+        if (selectedRow != -1) {
+            for (int i = 0; i < inputFields.length; i++) {
+                inputFields[i].setText(String.valueOf(tableModel.getValueAt(selectedRow, i + 1)));
+            }
         }
     }
 
     private void limparCampos() {
-        txtTitulo.setText("");
-        txtAnoLancamento.setText("");
-        txtNumeroFaixas.setText("");
+        for (JTextField field : inputFields) {
+            field.setText("");
+        }
+        dataTable.clearSelection();
+    }
+
+    private String capitalize(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        if (str.contains("(")) {
+            str = str.substring(0, str.indexOf("(")).trim();
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }
 </code></pre>
 
-<h2> Artista - GUI </h2>
+<h2> Ritmo.java </h2>
 <pre><code class="language-java">
-package org.example.calculomedia.gui;
+  public class Ritmo {
+    private int id;
+    private String ouvir;
+    private String palavras;
+    private String vazio;
 
-import org.example.calculomedia.Artista;
-import org.example.calculomedia.service.ArtistaService;
-import javax.swing.*;
+    public Ritmo(int id, String ouvir, String palavras, String vazio) {
+        this.id = id;
+        this.ouvir = ouvir;
+        this.palavras = palavras;
+        this.vazio = vazio;
+    }
+    public Ritmo(String ouvir, String palavras, String vazio) {
+        this(0, ouvir, palavras, vazio);
+    }
+
+    public boolean parecerFirme() {
+        return this.palavras != null && this.palavras.length() > 5;
+    }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getOuvir() { return ouvir; }
+    public void setOuvir(String ouvir) { this.ouvir = ouvir; }
+    public String getPalavras() { return palavras; }
+    public void setPalavras(String palavras) { this.palavras = palavras; }
+    public String getVazio() { return vazio; }
+    public void setVazio(String vazio) { this.vazio = vazio; }
+}
+</code></pre>
+
+<h2> Fogo.java </h2>
+<pre><code class="language-java">
+public class Fogo {
+    private int id;
+    private String sensacao;
+    private String fim;
+    private String recomecar;
+
+    //Construtor (Lê dados do SQLite)
+    public Fogo(int id, String sensacao, String fim, String recomecar) {
+        this.id = id;
+        this.sensacao = sensacao;
+        this.fim = fim;
+        this.recomecar = recomecar;
+    }
+
+    //Construtor simplificado (Usado para criar um novo item quando clicado em "Adicionar")
+    public Fogo(String sensacao, String fim, String recomecar) {
+        this(0, sensacao, fim, recomecar);
+    }
+
+
+    public String acharSensacao() {
+        return "Sensação: " + this.sensacao;
+    }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getSensacao() { return sensacao; }
+    public void setSensacao(String sensacao) { this.sensacao = sensacao; }
+    public String getFim() { return fim; }
+    public void setFim(String fim) { this.fim = fim; }
+    public String getRecomecar() { return recomecar; }
+    public void setRecomecar(String recomecar) { this.recomecar = recomecar; }
+}
+</code></pre>
+
+<h2> JanelaVoz.java </h2>
+<pre><code class="language-java">
+ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.List;
 
-public class ArtistaGUI extends JPanel {
-    private ArtistaService artistaService = new ArtistaService();
-    private JTable artistaTable;
+public class JanelaVoz extends JFrame {
+
+    private JTextField tomField;
+    private JTextField revoltaField;
+    private JTextField melhoriaField;
+    private JTable vozTable;
     private DefaultTableModel tableModel;
-    private JTextField txtNomeCompleto, txtNacionalidade, txtAnoInicio;
 
-    public ArtistaGUI() {
-        setLayout(new BorderLayout(10, 10));
-        
-        String[] colunas = {"Nome Completo", "Nacionalidade", "Início Carreira"};
-        tableModel = new DefaultTableModel(colunas, 0);
-        artistaTable = new JTable(tableModel);
-        carregarArtistasNaTabela();
-        
-        JPanel topPanel = new JPanel(new BorderLayout(10, 10));
-        JPanel formPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+    public JanelaVoz() {
+        super("CRUD - Voz");
 
-        txtNomeCompleto = new JTextField(20);
-        txtNacionalidade = new JTextField(20);
-        txtAnoInicio = new JTextField(20);
+        tomField = new JTextField(15);
+        revoltaField = new JTextField(15);
+        melhoriaField = new JTextField(15);
 
-        formPanel.add(new JLabel("Nome Completo:"));
-        formPanel.add(txtNomeCompleto);
-        formPanel.add(new JLabel("Nacionalidade:"));
-        formPanel.add(txtNacionalidade);
-        formPanel.add(new JLabel("Ano de início de carreira:"));
-        formPanel.add(txtAnoInicio);
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        gbc.gridx = 0; gbc.gridy = 0; inputPanel.add(new JLabel("Tom:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 0; inputPanel.add(tomField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 1; inputPanel.add(new JLabel("Revolta:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 1; inputPanel.add(revoltaField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 2; inputPanel.add(new JLabel("Melhoria (%):"), gbc);
+        gbc.gridx = 1; gbc.gridy = 2; inputPanel.add(melhoriaField, gbc);
+
+        String[] columnNames = {"ID", "Tom", "Revolta", "Melhoria (%)", "Método"};
+        tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+        vozTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(vozTable);
+        scrollPane.setPreferredSize(new Dimension(550, 200));
+
+        vozTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && vozTable.getSelectedRow() != -1) {
+                preencherCamposComSelecao();
+            }
+        });
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        JButton btnSalvar = new JButton("Salvar");
-        JButton btnBuscar = new JButton("Recarregar ");
-        JButton btnAtualizar = new JButton("Atualizar");
-        JButton btnDeletar = new JButton("Deletar ");
+        JButton addButton = new JButton("Adicionar");
+        JButton updateButton = new JButton("Atualizar ");
+        JButton deleteButton = new JButton("Remover");
+        JButton clearButton = new JButton("Limpar Campos");
 
-        buttonPanel.add(btnSalvar);
-        buttonPanel.add(btnBuscar);
-        buttonPanel.add(btnAtualizar);
-        buttonPanel.add(btnDeletar);
+        buttonPanel.add(addButton); buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton); buttonPanel.add(clearButton);
 
-        topPanel.add(formPanel, BorderLayout.NORTH);
-        topPanel.add(buttonPanel, BorderLayout.SOUTH);
-        
-        add(topPanel, BorderLayout.NORTH);
-        add(new JScrollPane(artistaTable), BorderLayout.CENTER);
-        
-        btnSalvar.addActionListener(e -> salvarArtista());
-        btnBuscar.addActionListener(e -> carregarArtistasNaTabela());
-        btnAtualizar.addActionListener(e -> atualizarArtista());
-        btnDeletar.addActionListener(e -> deletarArtista());
-        
-        artistaTable.getSelectionModel().addListSelectionListener(e -> preencherCampos());
+        setLayout(new BorderLayout(10, 10));
+        add(inputPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        addButton.addActionListener(this::adicionarVoz);
+        updateButton.addActionListener(this::atualizarVoz);
+        deleteButton.addActionListener(this::deletarVoz);
+        clearButton.addActionListener(e -> limparCampos());
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        carregarRegistros();
     }
 
-    private void carregarArtistasNaTabela() {
-        tableModel.setRowCount(0);
-        List<Artista> artistas = artistaService.buscarTodos();
-
-        for (Artista a : artistas) {
-            tableModel.addRow(new Object[]{a.getNomeCompleto(), a.getNacionalidade(), a.getAnoInicioCarreira()});
-        }
-    }
-
-    private void salvarArtista() {
-        try {
-            String nome = txtNomeCompleto.getText();
-            String nacionalidade = txtNacionalidade.getText();
-            int anoInicio = Integer.parseInt(txtAnoInicio.getText());
-
-            if (artistaService.buscarPorId(nome) != null) {
-                JOptionPane.showMessageDialog(this, "Artista com este nome já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            Artista novoArtista = new Artista(nome, nacionalidade, anoInicio);
-            artistaService.salvar(novoArtista);
-            carregarArtistasNaTabela();
-            limparCampos();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "O ano deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void atualizarArtista() {
-        try {
-            String nome = txtNomeCompleto.getText();
-            String nacionalidade = txtNacionalidade.getText();
-            int anoInicio = Integer.parseInt(txtAnoInicio.getText());
-
-            Artista artistaAtualizado = new Artista(nome, nacionalidade, anoInicio);
-            artistaService.atualizar(artistaAtualizado);
-
-            carregarArtistasNaTabela();
-            limparCampos();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "O ano deve ser um número inteiro.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void deletarArtista() {
-        String nome = txtNomeCompleto.getText();
-        if (artistaService.buscarPorId(nome) == null) {
-            JOptionPane.showMessageDialog(this, "Artista não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+    private void adicionarVoz(ActionEvent e) {
+        if (tomField.getText().isEmpty() || melhoriaField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha Tom e Melhoria.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        Artista artistaParaDeletar = new Artista(nome, "", 0); // Apenas o nome (ID) é necessário
-        artistaService.deletar(artistaParaDeletar);
-
-        carregarArtistasNaTabela();
-        limparCampos();
+        try {
+            int melhoria = Integer.parseInt(melhoriaField.getText());
+            Voz novaVoz = new Voz(tomField.getText(), revoltaField.getText(), melhoria);
+            Main.inserirVoz(novaVoz);
+            limparCampos();
+            carregarRegistros();
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Melhoria deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    private void preencherCampos() {
-        int row = artistaTable.getSelectedRow();
-        if (row >= 0) {
-            txtNomeCompleto.setText(tableModel.getValueAt(row, 0).toString());
-            txtNacionalidade.setText(tableModel.getValueAt(row, 1).toString());
-            txtAnoInicio.setText(tableModel.getValueAt(row, 2).toString());
+    private void atualizarVoz(ActionEvent e) {
+        int selectedRow = vozTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para atualizar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            int id = (int) tableModel.getValueAt(selectedRow, 0);
+            int melhoria = Integer.parseInt(melhoriaField.getText());
+            Voz vozAtualizada = new Voz(id, tomField.getText(), revoltaField.getText(), melhoria);
+            Main.atualizarVoz(vozAtualizada);
+            JOptionPane.showMessageDialog(this, "Registro ID " + id + " atualizado com sucesso!");
+            limparCampos();
+            carregarRegistros();
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Melhoria deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deletarVoz(ActionEvent e) {
+        int selectedRow = vozTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para remover.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int id = (int) tableModel.getValueAt(selectedRow, 0);
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover o registro ID " + id + "?", "Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                Main.deletarVoz(id);
+                JOptionPane.showMessageDialog(this, "Registro ID " + id + " removido com sucesso!");
+                limparCampos();
+                carregarRegistros();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void carregarRegistros() {
+        tableModel.setRowCount(0);
+        List<Voz> vozes = Main.listarTodasVozes();
+        for (Voz v : vozes) {
+            tableModel.addRow(new Object[]{
+                    v.getId(),
+                    v.getTom(),
+                    v.getRevolta(),
+                    v.getMelhoria(),
+                    v.ouvirTom()
+            });
+        }
+    }
+
+    private void preencherCamposComSelecao() {
+        int selectedRow = vozTable.getSelectedRow();
+        if (selectedRow != -1) {
+            tomField.setText((String) tableModel.getValueAt(selectedRow, 1));
+            revoltaField.setText((String) tableModel.getValueAt(selectedRow, 2));
+            melhoriaField.setText(String.valueOf(tableModel.getValueAt(selectedRow, 3)));
         }
     }
 
     private void limparCampos() {
-        txtNomeCompleto.setText("");
-        txtNacionalidade.setText("");
-        txtAnoInicio.setText("");
+        tomField.setText("");
+        revoltaField.setText("");
+        melhoriaField.setText("");
+        vozTable.clearSelection();
     }
 }
 </code></pre>
 
-<h2> DAO </h2>
+<h2> JanelaRitmo.java </h2>
 <pre><code class="language-java">
- package org.example.calculomedia.dao;
-
+ import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.List;
 
-public interface DAO<T> {
-    void salvar(T objeto);
-    T buscarPorId(String id);
-    void atualizar(T objeto);
-    void deletar(T objeto);
-    List<T> buscarTodos();
+public class JanelaRitmo extends JFrame {
+
+    private JTextField ouvirField;
+    private JTextField palavrasField;
+    private JTextField vazioField;
+    private JTable ritmoTable;
+    private DefaultTableModel tableModel;
+
+    public JanelaRitmo() {
+        super("CRUD - Ritmo");
+
+        ouvirField = new JTextField(15);
+        palavrasField = new JTextField(15);
+        vazioField = new JTextField(15);
+
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        gbc.gridx = 0; gbc.gridy = 0; inputPanel.add(new JLabel("Ouvir:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 0; inputPanel.add(ouvirField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 1; inputPanel.add(new JLabel("Palavras:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 1; inputPanel.add(palavrasField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 2; inputPanel.add(new JLabel("Vazio:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 2; inputPanel.add(vazioField, gbc);
+
+        String[] columnNames = {"ID", "Ouvir", "Palavras", "Vazio", "Firme?"};
+        tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+        ritmoTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(ritmoTable);
+        scrollPane.setPreferredSize(new Dimension(550, 200));
+
+        ritmoTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && ritmoTable.getSelectedRow() != -1) {
+                preencherCamposComSelecao();
+            }
+        });
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JButton addButton = new JButton("Adicionar");
+        JButton updateButton = new JButton("Atualizar");
+        JButton deleteButton = new JButton("Remover");
+        JButton clearButton = new JButton("Limpar Campos");
+
+        buttonPanel.add(addButton); buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton); buttonPanel.add(clearButton);
+
+        setLayout(new BorderLayout(10, 10));
+        add(inputPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        addButton.addActionListener(this::adicionarRitmo);
+        updateButton.addActionListener(this::atualizarRitmo);
+        deleteButton.addActionListener(this::deletarRitmo);
+        clearButton.addActionListener(e -> limparCampos());
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        carregarRegistros();
+    }
+
+    private void adicionarRitmo(ActionEvent e) {
+        if (ouvirField.getText().isEmpty() || palavrasField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha Percepção e Palavras.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            Ritmo novoRitmo = new Ritmo(ouvirField.getText(), palavrasField.getText(), vazioField.getText());
+            Main.inserirRitmo(novoRitmo);
+            limparCampos();
+            carregarRegistros();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void atualizarRitmo(ActionEvent e) {
+        int selectedRow = ritmoTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para atualizar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            int id = (int) tableModel.getValueAt(selectedRow, 0);
+            Ritmo ritmoAtualizado = new Ritmo(id, ouvirField.getText(), palavrasField.getText(), vazioField.getText());
+            Main.atualizarRitmo(ritmoAtualizado);
+            JOptionPane.showMessageDialog(this, "Registro ID " + id + " atualizado com sucesso!");
+            limparCampos();
+            carregarRegistros();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deletarRitmo(ActionEvent e) {
+        int selectedRow = ritmoTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para remover.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int id = (int) tableModel.getValueAt(selectedRow, 0);
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover o registro ID " + id + "?", "Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                Main.deletarRitmo(id);
+                JOptionPane.showMessageDialog(this, "Registro ID " + id + " removido com sucesso!");
+                limparCampos();
+                carregarRegistros();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void carregarRegistros() {
+        tableModel.setRowCount(0);
+        List<Ritmo> ritmos = Main.listarTodosRitmos();
+        for (Ritmo r : ritmos) {
+            tableModel.addRow(new Object[]{
+                    r.getId(),
+                    r.getOuvir(),
+                    r.getPalavras(),
+                    r.getVazio(),
+                    r.parecerFirme()
+            });
+        }
+    }
+
+    private void preencherCamposComSelecao() {
+        int selectedRow = ritmoTable.getSelectedRow();
+        if (selectedRow != -1) {
+            ouvirField.setText((String) tableModel.getValueAt(selectedRow, 1));
+            palavrasField.setText((String) tableModel.getValueAt(selectedRow, 2));
+            vazioField.setText((String) tableModel.getValueAt(selectedRow, 3));
+        }
+    }
+
+    private void limparCampos() {
+        ouvirField.setText("");
+        palavrasField.setText("");
+        vazioField.setText("");
+        ritmoTable.clearSelection();
+    }
 }
 </code></pre>
+
+<h2> JanelaFogo.java </h2>
+<pre><code class="language-java">
+ import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.List;
+
+public class JanelaFogo extends JFrame {
+
+    private JTextField sensacaoField;
+    private JTextField fimField;
+    private JTextField recomecarField;
+    private JTable fogoTable;
+    private DefaultTableModel tableModel;
+
+    public JanelaFogo() {
+        super("CRUD - Fogo");
+
+        sensacaoField = new JTextField(15);
+        fimField = new JTextField(15);
+        recomecarField = new JTextField(15);
+
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        gbc.gridx = 0; gbc.gridy = 0; inputPanel.add(new JLabel("Sensação:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 0; inputPanel.add(sensacaoField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 1; inputPanel.add(new JLabel("Fim:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 1; inputPanel.add(fimField, gbc);
+
+        gbc.gridx = 0; gbc.gridy = 2; inputPanel.add(new JLabel("Recomeçar:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 2; inputPanel.add(recomecarField, gbc);
+
+        String[] columnNames = {"ID", "Sensação", "Fim", "Recomeçar", "Método"};
+        tableModel = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
+        fogoTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(fogoTable);
+        scrollPane.setPreferredSize(new Dimension(550, 200));
+
+        fogoTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && fogoTable.getSelectedRow() != -1) {
+                preencherCamposComSelecao();
+            }
+        });
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JButton addButton = new JButton("Adicionar");
+        JButton updateButton = new JButton("Atualizar");
+        JButton deleteButton = new JButton("Remover");
+        JButton clearButton = new JButton("Limpar Campos");
+
+        buttonPanel.add(addButton); buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton); buttonPanel.add(clearButton);
+
+        setLayout(new BorderLayout(10, 10));
+        add(inputPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        addButton.addActionListener(this::adicionarFogo);
+        updateButton.addActionListener(this::atualizarFogo);
+        deleteButton.addActionListener(this::deletarFogo);
+        clearButton.addActionListener(e -> limparCampos());
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        carregarRegistros();
+    }
+
+    private void adicionarFogo(ActionEvent e) {
+        if (sensacaoField.getText().isEmpty() || fimField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha Sensação e Fim.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            Fogo novoFogo = new Fogo(sensacaoField.getText(), fimField.getText(), recomecarField.getText());
+            Main.inserirFogo(novoFogo);
+            limparCampos();
+            carregarRegistros();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void atualizarFogo(ActionEvent e) {
+        int selectedRow = fogoTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para atualizar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            int id = (int) tableModel.getValueAt(selectedRow, 0);
+            Fogo fogoAtualizado = new Fogo(id, sensacaoField.getText(), fimField.getText(), recomecarField.getText());
+            Main.atualizarFogo(fogoAtualizado);
+            JOptionPane.showMessageDialog(this, "Registro ID " + id + " atualizado com sucesso!");
+            limparCampos();
+            carregarRegistros();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deletarFogo(ActionEvent e) {
+        int selectedRow = fogoTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um registro na tabela para remover.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int id = (int) tableModel.getValueAt(selectedRow, 0);
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover o registro ID " + id + "?", "Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                Main.deletarFogo(id);
+                JOptionPane.showMessageDialog(this, "Registro ID " + id + " removido com sucesso!");
+                limparCampos();
+                carregarRegistros();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro ao remover: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void carregarRegistros() {
+        tableModel.setRowCount(0);
+        List<Fogo> fogos = Main.listarTodosFogos();
+        for (Fogo f : fogos) {
+            tableModel.addRow(new Object[]{
+                    f.getId(),
+                    f.getSensacao(),
+                    f.getFim(),
+                    f.getRecomecar(),
+                    f.acharSensacao()
+            });
+        }
+    }
+
+    private void preencherCamposComSelecao() {
+        int selectedRow = fogoTable.getSelectedRow();
+        if (selectedRow != -1) {
+            sensacaoField.setText((String) tableModel.getValueAt(selectedRow, 1));
+            fimField.setText((String) tableModel.getValueAt(selectedRow, 2));
+            recomecarField.setText((String) tableModel.getValueAt(selectedRow, 3));
+        }
+    }
+
+    private void limparCampos() {
+        sensacaoField.setText("");
+        fimField.setText("");
+        recomecarField.setText("");
+        fogoTable.clearSelection();
+    }
+}
+</code></pre>
+
+
 
 
 
